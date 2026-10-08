@@ -1,0 +1,25 @@
+name: Build AscendantCore
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+      - name: Show files
+        run: find . -maxdepth 4 -not -path './.git*' | head -50
+      - name: Build
+        run: mvn -B clean package
+      - name: Show jar
+        run: ls -la target
+      - uses: actions/upload-artifact@v4
+        with:
+          name: AscendantCore
+          path: target/*.jar
+          if-no-files-found: error
