@@ -1,0 +1,37 @@
+name: AscendantCore
+version: '1.1.0'
+main: dev.ascendant.core.AscendantCore
+api-version: '1.21'
+description: All-in-one SMP optimisation and combat toolkit with a GUI control panel.
+author: AscendantCore
+softdepend: [WorldGuard]
+commands:
+  ascendantcore:
+    description: AscendantCore admin command (gui, reload, revive, restart)
+    aliases: [ascdcore, acore]
+    permission: ascendantcore.admin
+  string:
+    description: Fill your inventory with string
+    permission: ascendantcore.string
+  withdrawheart:
+    description: Withdraw hearts as items
+    usage: /withdrawheart [amount]
+    permission: ascendantcore.lifesteal.withdraw
+  ascdrestart:
+    description: Start / cancel / check the server restart
+    usage: /ascdrestart [cancel|status]
+    aliases: [arestart]
+    permission: ascendantcore.admin
+permissions:
+  ascendantcore.admin:
+    default: op
+  ascendantcore.bypass:
+    default: op
+  ascendantcore.bypass.dimension:
+    default: op
+  ascendantcore.string:
+    default: true
+  ascendantcore.clickvillagers:
+    default: true
+  ascendantcore.lifesteal.withdraw:
+    default: true

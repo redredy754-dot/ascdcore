@@ -1,0 +1,153 @@
+# AscendantCore - everything here can also be changed in-game with /ascendantcore:gui
+# Messages use MiniMessage format: https://docs.advntr.dev/minimessage/format.html
+messages:
+  prefix: "<white><bold>AscendantCore</bold> <dark_gray>»</dark_gray> "
+  cleaner-warning: "<yellow>Cleaning items on ground in <red><time></red>!"
+  cleaner-done: "<green>Cleaned <white><count></white> items on ground."
+  restart-announce: "<red>Server restarting in <yellow><time></yellow>!"
+  restart-kick: "<red>The server is restarting. Rejoin in a moment!"
+
+modules:
+  shield-stunning: {enabled: true}          # ON = axes disable shields (vanilla)
+  attribute-swapping: {enabled: true}       # ON = allowed (vanilla)
+  one-player-sleep: {enabled: false}
+  string-command:
+    enabled: false
+    cooldown-seconds: 30
+  click-villagers:
+    enabled: false
+    allow-claim: true
+    allow-anchor: true
+    claimed-invulnerable: true
+    head-texture: ""              # optional: base64 texture value of a villager head (minecraft-heads.com); empty = automatic
+  cobweb-cleaner: {enabled: false, seconds: 10}
+  ban-items: {enabled: false, banned: []}
+  mace:
+    enchant-limiter:
+      enabled: false
+      limits: {density: 3, wind_burst: 1, breach: 2, fire_aspect: 1, unbreaking: 3, mending: 1}
+    limiter: {enabled: false, max-maces: 1, crafted: 0}
+    cooldown: {enabled: false, seconds: 10}
+  potion-limiter: {enabled: false, banned: []}
+  enchant-limiter: {enabled: false, limits: {}}
+  server-cleaner:
+    enabled: false
+    interval-seconds: 300
+    warn-seconds: [60, 10]
+    ignore-newer-than-seconds: 5
+  lifesteal:
+    enabled: false
+    starting-hearts: 10
+    max-hearts: 20
+    hearts-per-kill: 1
+    hearts-lost-on-death: 1
+    lose-heart-on-natural-death: false
+    elimination: SPECTATOR        # SPECTATOR or BAN
+    heart-item: true
+    drop-heart-at-max: true
+    heart-drops-instead: false
+    ignore-same-ip-kills: true
+  infinite-restock: {enabled: false}
+  clumps: {enabled: false, radius: 4.0, max-orb-value: 2000}
+  item-stacker:
+    enabled: false
+    radius: 3.0
+    max-stack-size: 1000
+    mode: BLACKLIST
+    list: []
+    show-name: true
+  server-restarter:
+    enabled: false
+    countdown-seconds: 60
+    announce-at: [60, 30, 10, 5, 4, 3, 2, 1]
+    protect-seconds: 10
+    method: AUTO                  # AUTO / SPIGOT_RESTART / SHUTDOWN
+    min-uptime-minutes: 10
+    ram-percent: {enabled: false, value: 90, checks: 3}
+    ram-mb: {enabled: false, value: 6000}
+    tps: {enabled: false, value: 12.0}
+    scheduled: {enabled: false, times: ["06:00", "18:00"]}
+  explosion-control:
+    enabled: false
+    global: {destruction: true, power: 1.0}
+    creeper: {destruction: true, power: 1.0}
+    tnt: {destruction: true, power: 1.0}
+    tnt-minecart: {destruction: true, power: 1.0}
+    end-crystal: {destruction: true, power: 1.0}
+    other: {destruction: true, power: 1.0}
+  optimizations:
+    enabled: false
+    spawn-limits: {monsters: 50, animals: 8, water-animals: 4, water-ambient: 10, ambient: 5}
+    view-distance: 8
+    simulation-distance: 6
+    entity-tracking-range: {players: 48, animals: 32, monsters: 40, misc: 24, other: 48}
+  insta-smelt: {enabled: false, speed: 10.0}
+  insta-brew: {enabled: false, ticks: 5}
+  anti-minimap:
+    enabled: false
+    # '&' becomes the section sign. These are the common fair-play codes; adjust them for the mods you want to block.
+    codes:
+      - "&n&o&m&i&n&i&m&a&p"
+      - "&f&a&i&r&x&a&e&r&o"
+      - "&3 &6 &3 &6 &3 &6 &e"
+  health-indicator: {enabled: false, mode: HP}    # HP or HEARTS
+  no-naked-kill:
+    enabled: false
+    naked-minutes: 30
+    require-poor-inventory: true
+    combat-removes-protection: true
+    invisible-sword-removes-protection: true
+  rituals:
+    enabled: false
+    sound: true                   # wither spawn sound when a ritual starts
+    lightning: true               # 4 lightning strikes in a circle, 5 blocks around the crafting table
+    entries: {}
+  anti-crystal:
+    enabled: false
+    disable-crystals: false
+    disable-anchors: false
+    crystal-damage: 1.0
+    crystal-destruction: true
+    anchor-damage: 1.0
+  custom-crafting:
+    enabled: false
+    presets:
+      cheap-golden-apple: false
+      nugget-apple: false
+      super-cheap-gap: false
+      cheap-nugget-gap: false
+      cheap-anvil: false
+      super-cheap-anvil: false
+      breeze-rod: false
+      cobweb: false
+      cheap-cobweb: false
+    custom: {}
+  item-cooldown: {enabled: false, entries: {}}
+  ping: {enabled: false}
+  death-ban: {enabled: false, spectator: false}
+  dimension-ban: {nether: false, end: false}
+  afk-protection: {enabled: false, seconds: 300}
+  combat:
+    enabled: false
+    timer-seconds: 30
+    display: BOSSBAR              # BOSSBAR / ACTIONBAR / NONE
+    block-commands: false
+    disable-elytra: false
+    safezone:
+      enabled: false              # needs WorldGuard
+      reaction: KNOCKBACK         # KNOCKBACK / DAMAGE / NONE
+      damage: 1.0                 # HP, 1.0 = half a heart
+      wall-color: RED
+    kill-sound: NONE              # NONE, DRAGON_GROWL, WITHER_SPAWN, WITHER_DEATH, SKELETON_HURT, DRAGON_FIREBALL_EXPLODE, XP_PICKUP, ANVIL_LAND
+    head-drop: false              # killed players drop their head (current / SkinsRestorer skin)
+    head-drop-chance: 100
+    cooldowns: {entries: {}}      # item cooldowns that apply while in combat
+    combat-log:
+      drop-items: true
+      lightning-on-kill: false
+      kill-subtitle: true
+      log-subtitle: true
+  trident-cooldown: {enabled: false, seconds: 10}
+  pearl-cooldown: {enabled: false, seconds: 10}
+  pot-timer: {enabled: false, entries: {}}
+  enderchest-edit: {enabled: false, type: CHEST}   # HOPPER / DISPENSER / CHEST / LARGE_CHEST
